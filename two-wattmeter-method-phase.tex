@@ -1,0 +1,81 @@
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%
+% Phase Diagram for Three Voltmeter Method
+%
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+% Author: euikook <euikook@gmail.com>  (October 2023)
+\documentclass[border=3pt,tikz]{standalone}
+%\usepackage{amsmath}
+\usepackage{tikz}
+\usepackage{physics}
+\usepackage[outline]{contour} % glow around text
+\usetikzlibrary{angles,quotes} % for pic
+\contourlength{1.2pt}
+
+\tikzset{>=latex} % for LaTeX arrow head
+\usepackage{xcolor}
+
+\colorlet{veccol}{green!70!black}
+\colorlet{vcol}{green!70!black}
+\colorlet{xcol}{black!85!black}
+\colorlet{projcol}{xcol!60}
+\colorlet{unitcol}{xcol!60!black!85}
+\colorlet{myblue}{blue!70!black}
+\colorlet{myred}{red!90!black}
+\colorlet{mypurple}{blue!50!red!80!black!80}
+\tikzstyle{vector}=[->,thick,xcol]
+
+\begin{document}
+  \begin{tikzpicture}
+    \def\V{4}
+    \def\L{5}
+    \def\I{2.5}
+    \def\ang{120}
+    \coordinate (O) at (0,0);
+    \coordinate (VA) at (\V, 0);
+    \coordinate (VB) at (-120:\V);
+    \coordinate (VC) at (120:\V);
+    \coordinate (AB) at (30:\L);
+    \coordinate (BC) at (-90:\L);
+    \coordinate (CB) at (90:\L);
+    \coordinate (CA) at (150:\L);
+
+    \coordinate (IA) at (-15:\I);
+    \coordinate (IB) at (-135:\I);
+    \coordinate (IC) at (105:\I);
+
+  
+
+    % node[above, scale = 1.3]
+
+    \draw [vector, ->] (O) -- (VA) node[above, right=1] {$\vb{V_a}$};
+    \draw [vector, ->] (O) -- (VB) node[below] {$\vb{V_b}$};
+    \draw [vector, ->] (O) -- (VC) node[above] {$\vb{V_c}$};
+
+    \draw [vector, ->, gray] (O) -- (IA) node[above, right=1] {$\vb{I_a}$};
+    \draw [vector, ->, gray] (O) -- (IB) node[below] {$\vb{I_b}$};
+    \draw [vector, ->, gray] (O) -- (IC) node[above] {$\vb{I_c}$};
+
+    
+    \draw pic["$120^\circ$", black, draw=black, angle radius=8,angle eccentricity=2.5] {angle = VB--O--VA};
+    \draw pic["$120^\circ$", black, draw=black, angle radius=8,angle eccentricity=2.5] {angle = VA--O--VC};
+    \draw pic["$120^\circ$", black, draw=black, angle radius=8,angle eccentricity=2.5] {angle = VC--O--VB};
+    \draw pic["$120^\circ$", black, draw=black, angle radius=8,angle eccentricity=2.5] {angle = VA--O--VC};
+    \draw pic["$120^\circ$", black, draw=black, angle radius=8,angle eccentricity=2.5] {angle = VC--O--VB};
+
+    % \draw [vector, ->, dashed, red!70!black] (O) -- (AB) node[above] {$\vb{V_{ab}}$};
+    % \draw [vector, ->, dashed] (O) -- (BC) node[below] {$\vb{V_{bc}}$};
+    % \draw [vector, ->, dashed] (O) -- (CA) node[above] {$\vb{V_{ca}}$};
+    % \draw [vector, ->, dashed, purple!70!black] (O) -- (CB) node[above] {$\vb{V_{cb}}$};
+
+    % \draw pic["$\phi$", red, draw=red, angle radius=20,angle eccentricity=1.2] {angle = IA--O--AB};
+    % \draw pic["$\theta$", purple, draw=purple, angle radius=30,angle eccentricity=1.2] {angle = IA--O--VA};
+    % \draw pic["$30^\circ$", green!70!black, draw=green!70!black,angle radius=30,angle eccentricity=1.35] {angle = VA--O--AB};
+
+    % \draw pic["$\phi$", red, draw=red, angle radius=40,angle eccentricity=1.2] {angle = CB--O--IC};
+    % \draw pic["$\theta$", purple, draw=purple, angle radius=40,angle eccentricity=1.2] {angle = IC--O--VC};
+    % \draw pic["$30^\circ$", green!70!black, draw=green!70!black,angle radius=20,angle eccentricity=1.35] {angle = CB--O--VC};
+
+
+\end{tikzpicture}
+\end{document}

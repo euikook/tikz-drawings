@@ -1,0 +1,45 @@
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%
+% Circuit Diagram for Three Voltmeter Method
+%
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+% Author: euikook <euikook@gmail.com>  (October 2023)
+\documentclass[border=3pt,tikzcircuit]{standalone}
+
+
+\usepackage{physics}
+\usepackage[outline]{contour} % glow around text
+
+\usepackage{tikz}
+  \usetikzlibrary{angles,quotes} % for pic
+
+\usepackage{circuitikz}
+
+\begin{document}
+    \begin{circuitikz}[scale=1.4]
+      \draw
+      (0,0) to[sinusoidal voltage source, l=$V_{in}$, o-o] (0,4)
+      to[rmeterwa, t=A, l=$I_{1}$] (3, 4)
+      to[rmeterwa, t=A, l=$I_{2}$, *-] (3, 1.5)
+      (3, 2.2) to [R, l=$R$, -*] (3, 0) -- (0, 0)       
+      (3, 4) to[rmeterwa, t=A, l=$I_{3}$] (6,4)
+      to [generic, l=$Z_{L}$] (6, 0) -- (0,0)
+
+      (2, 4) to [short, i=$I_1$] (3, 4)
+      (3, 4) to [short, i=$I_2$] (3, 3)
+      (3, 4) to [short, i=$I_3$] (4, 4)
+
+      
+
+      % to [short, i=$I_1$] (1, 4) % stator current
+      % (2, 4) to [short, i=$I_3$, *-] (3, 4)
+      % (2, 0) to[rmeterwa, t=V, l=$V_{1}$, *-*] (2,4)
+      % (2, 4) to [R, l=$R$] (4, 4) 
+      % to[rmeterwa, t=V, l=$V_{3}$, *-*] (4,0) -- (2, 0)
+      % (4, 4) -- (6, 4) to [generic, l=$Z_{L}$] (6, 0) -- (4, 0)
+      % (2, 4) -- (2, 5.5) to[rmeterwa, t=V, l=$V_{2}$] (4, 5.5) -- (4, 4)
+      % %(4,4) -* (6,4)
+      % %to[ammeter, l=$I_{mis}$] (6,2) to[R=$R_x$, -*] (6,0) -- (4,0)
+      ;
+    \end{circuitikz}
+\end{document}

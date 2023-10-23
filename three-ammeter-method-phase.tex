@@ -1,0 +1,48 @@
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%
+% Phase Diagram for Three Voltmeter Method
+%
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+% Author: euikook <euikook@gmail.com>  (October 2023)
+\documentclass[border=3pt,tikz]{standalone}
+%\usepackage{amsmath}
+\usepackage{tikz}
+\usepackage{physics}
+\usepackage[outline]{contour} % glow around text
+\usetikzlibrary{angles,quotes} % for pic
+\contourlength{1.2pt}
+
+\tikzset{>=latex} % for LaTeX arrow head
+\usepackage{xcolor}
+
+\colorlet{veccol}{green!70!black}
+\colorlet{vcol}{green!70!black}
+\colorlet{xcol}{black!85!black}
+\colorlet{projcol}{xcol!60}
+\colorlet{unitcol}{xcol!60!black!85}
+\colorlet{myblue}{blue!70!black}
+\colorlet{myred}{red!90!black}
+\colorlet{mypurple}{blue!50!red!80!black!80}
+\tikzstyle{vector}=[->,thick,xcol]
+
+\begin{document}
+  \begin{tikzpicture}
+    \def\I2{1}
+    \def\I3{6.3}
+    \def\ang{45}
+    \coordinate (I2) at (-2, 0); 
+    \coordinate (O) at (0,0);
+    \coordinate (I3) at (\ang:\I3);
+    \coordinate (V) at ({\I3*cos(\ang)}, 0);
+
+    \draw [vector, ->] (I2) -- (I3) node[midway,left=20,above right=0] {$\vb{\hat{I_1}}$};
+    \draw [vector, ->] (I2) -- (O) node[midway,left=10,below right=0] {$\vb{\hat{I_2}}$};
+    \draw [vector, ->] (O) -- (I3) node[midway,left=5,below right=0] {$\vb{\hat{I_3}}$};
+    \draw [vector, dashed] (O) -- (V) node[midway,left=5,below right=0] {$\vb{\hat{V}}$};
+    \draw [dashed] (V) -- (I3);
+
+    \draw pic["$\phi$", blue, draw=blue,angle radius=8,angle eccentricity=2] {angle = I3--O--I2};
+    \draw pic["$\theta$", red, draw=red,angle radius=8,angle eccentricity=2] {angle = V--O--I3};
+
+\end{tikzpicture}
+\end{document}
